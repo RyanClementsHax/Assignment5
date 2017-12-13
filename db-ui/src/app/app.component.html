@@ -1,8 +1,25 @@
 <h1>
-  List of States
+  List of Flowers
 </h1>
-<input [(ngModel)]="inputState" (keyup.enter)="addState()"/>
-<button (click)="addState()">+</button>
-<div *ngFor="let state of states">
-  {{ state }}
+<div>
+  <div *ngFor="let flower of flowers" (click)="selectFlower(flower)">
+    {{ flower.comname }}
+  </div>
+</div>
+<div>
+  <input [(ngModel)]="selectedFlower.comname" (value)="selectedFlower.comname"/>
+  <input [(ngModel)]="selectedFlower.genus" (value)="selectedFlower.genus"/>
+  <input [(ngModel)]="selectedFlower.species" (value)="selectedFlower.species"/>
+  <button (click)="updateFlower()">Save</button>
+  <table>
+    <tr *ngFor="let sighting of selectedFlower.sightings">
+      <td>{{ sighting.person }}</td>
+      <td>{{ sighting.location }}</td>
+      <td>{{ sighting.sighted }}</td>
+    </tr>
+  </table>
+  <input [(ngModel)]="inputSighting.person"/>
+  <input [(ngModel)]="inputSighting.location"/>
+  <input [(ngModel)]="inputSighting.sighted"/>
+  <button (click)="addSighting()">+</button>
 </div>

@@ -1,3 +1,5 @@
+This was made by RyanClementsHax and zpohl97
+
 To start our assignment follow these steps:
 1. run "npm install -g @angular/cli"
 2. clone the repo

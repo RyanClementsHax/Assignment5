@@ -1,4 +1,5 @@
 To start our assignment follow these steps:
+0. run "npm install -g @angular/cli"
 1. clone the repo
 2. cd into the backend folder
 3. run "npm install"

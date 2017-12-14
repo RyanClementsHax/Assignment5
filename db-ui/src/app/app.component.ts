@@ -7,65 +7,36 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  inputSighting: any = { person: '', location: '', sighted: '' };
-  selectedFlower: any = { comname: '', species: '', genus: '', sightings: [] };
-  flowers = [
-    { 
-      comname: "Lily",
-      genus: "hello",
-      species: "world",
-      sightings: [
-        {
-          person: "mary",
-          location: "garden",
-          sighted: "12/06/1996"
-        },
-        {
-          person: "joseph",
-          location: "eden",
-          sighted: "12/06/1998"
-        }
-      ]
-    }, 
-    {
-      comname: "Rose",
-      genus: "what",
-      species: "jesus",
-      sightings: [
-        {
-          person: "adam",
-          location: "nazarath",
-          sighted: "2/09/1986"
-        },
-        {
-          person: "eve",
-          location: "eve",
-          sighted: "11/07/1998"
-        }
-      ]
-    }
-  ];
+  inputSighting: any = { PERSON: '', LOCATION: '', SIGHTED: '' };
+  selectedFlower: any = { COMNAME: '', SPECIES: '', GENUS: '', SIGHTINGS: [] };
+  oldName: any;
+  flowers: any;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() { 
-    this.http.get<any>('/list').subscribe(data => {
+    this.http.get<any>('http://localhost:3000/').subscribe(data => {
       this.flowers = data;
     });
   }
 
   addSighting() {
-    this.selectedFlower.sightings.push(this.inputSighting);
-    this.inputSighting = { person: '', location: '', sighted: '' };
+    this.selectedFlower.SIGHTINGS.push(this.inputSighting);
+    this.inputSighting.NAME = this.selectedFlower.COMNAME;
 
-    this.http.post('/update', this.selectedFlower);
+    console.log(this.inputSighting);
+
+    this.http.post('http://localhost:3000/sightings', this.inputSighting).subscribe(() => {});
+
+    this.inputSighting = { NAME: '', PERSON: '', LOCATION: '', SIGHTED: '' };
   }
 
   updateFlower() {
-    this.http.post('/update', this.selectedFlower);
+    this.http.post('http://localhost:3000/flowers', { newFlower: this.selectedFlower, oldName: this.oldName }).subscribe(() => {});
   }
 
   selectFlower(flower: any) {
-    this.selectedFlower = flower;
+    this.selectedFlower = { ...flower };
+    this.oldName = this.selectedFlower.COMNAME;
   }
 }

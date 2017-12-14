@@ -3,23 +3,23 @@
 </h1>
 <div>
   <div *ngFor="let flower of flowers" (click)="selectFlower(flower)">
-    {{ flower.comname }}
+    {{ flower.COMNAME }}
   </div>
 </div>
 <div>
-  <input [(ngModel)]="selectedFlower.comname" (value)="selectedFlower.comname"/>
-  <input [(ngModel)]="selectedFlower.genus" (value)="selectedFlower.genus"/>
-  <input [(ngModel)]="selectedFlower.species" (value)="selectedFlower.species"/>
+  <input [(ngModel)]="selectedFlower.COMNAME" (value)="selectedFlower.COMNAME"/>
+  <input [(ngModel)]="selectedFlower.GENUS" (value)="selectedFlower.GENUS"/>
+  <input [(ngModel)]="selectedFlower.SPECIES" (value)="selectedFlower.SPECIES"/>
   <button (click)="updateFlower()">Save</button>
   <table>
-    <tr *ngFor="let sighting of selectedFlower.sightings">
-      <td>{{ sighting.person }}</td>
-      <td>{{ sighting.location }}</td>
-      <td>{{ sighting.sighted }}</td>
+    <tr *ngFor="let sighting of selectedFlower.SIGHTINGS">
+      <td>{{ sighting.PERSON }}</td>
+      <td>{{ sighting.LOCATION }}</td>
+      <td>{{ sighting.SIGHTED }}</td>
     </tr>
   </table>
-  <input [(ngModel)]="inputSighting.person"/>
-  <input [(ngModel)]="inputSighting.location"/>
-  <input [(ngModel)]="inputSighting.sighted"/>
+  <input [(ngModel)]="inputSighting.PERSON"/>
+  <input [(ngModel)]="inputSighting.LOCATION"/>
+  <input [(ngModel)]="inputSighting.SIGHTED"/>
   <button (click)="addSighting()">+</button>
 </div>

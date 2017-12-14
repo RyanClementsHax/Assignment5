@@ -6,4 +6,5 @@ To start our assignment follow these steps:
 5. cd into the db-ui folder
 6. run "npm install"
 7. run "ng serve"
-8. enjoy!
+8. open https://localhost:4200/
+9. enjoy!

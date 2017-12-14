@@ -1,4 +1,4 @@
-This was made by RyanClementsHax and zpohl97
+This was made by Ryan Clements (RyanClementsHax) and Zachary Pohl (zpohl97)
 
 To start our assignment follow these steps:
 1. run "npm install -g @angular/cli"
